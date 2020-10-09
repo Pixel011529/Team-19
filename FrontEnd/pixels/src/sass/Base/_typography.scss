@@ -1,0 +1,121 @@
+%heading {
+	font-family: $font-display;
+	font-weight: 400;
+}
+
+.heading--1 {
+	@extend %heading;
+	font-size: 5rem;
+	line-height: 1;
+
+	@include respond(phone-land) {
+		font-size: 4rem;
+	}
+
+	@include respond(phone) {
+		font-size: 3.5rem;
+	}
+
+	&-dark {
+		color: $color-grey-dark;
+	}
+
+	&-light {
+		color: $color-secondary;
+	}
+
+	&-white {
+		color: $color-white;
+	}
+
+	&-primary {
+		color: $color-primary;
+	}
+}
+
+.heading--2 {
+	@extend %heading;
+	font-size: 3rem;
+	line-height: 1;
+
+	&-dark {
+		color: $color-grey-dark;
+	}
+
+	&-primary {
+		color: $color-primary;
+	}
+
+	&-light {
+		color: $color-white;
+	}
+}
+
+.heading--3 {
+	@extend %heading;
+	font-size: 2.2rem;
+	line-height: 1.4;
+	&-dark {
+		color: $color-grey-dark-2;
+	}
+
+	&-primary {
+		color: $color-primary;
+	}
+
+	&-light {
+		color: $color-white;
+	}
+}
+
+.heading--4 {
+	@extend %heading;
+	font-size: 2rem;
+	line-height: 1.2;
+
+	&-dark {
+		color: $color-primary;
+	}
+
+	&-light {
+		color: $color-white;
+	}
+}
+
+.heading--5 {
+	@extend %heading;
+	font-size: 1.6rem;
+	line-height: 1.3;
+
+	&-dark {
+		color: $color-grey-dark;
+	}
+
+	&-light {
+		color: $color-white;
+	}
+
+	&-primary {
+		color: $color-primary;
+	}
+
+	&-danger {
+		color: #d43737;
+	}
+}
+
+.text-center {
+	text-align: center;
+}
+
+.btn,
+.btn:active,
+.btn:focus {
+	font-size: 2rem;
+	border: none;
+	outline: none;
+	font-family: $font-display;
+	padding: 1.5rem 4rem;
+	cursor: pointer;
+	color: $color-white;
+}

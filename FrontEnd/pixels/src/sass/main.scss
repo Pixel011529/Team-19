@@ -1,0 +1,16 @@
+@import './Base/mixins';
+@import './Base/base';
+@import './Base/typography';
+
+@import './Layouts/footer';
+@import './Layouts/header';
+@import './Layouts/navbar';
+
+@import './HomePage/features';
+@import './HomePage/feedbacks';
+@import './HomePage/frequentlyAskedQuestions';
+@import './HomePage/sponsors';
+
+@import './ContactPage/contactPage';
+
+@import './LoginPage/loginPage';

@@ -1,0 +1,191 @@
+.contact {
+      grid-column: center-start / center-end;
+      padding: 8rem;
+      display: grid;
+      grid-template-rows: repeat(5,min-content);
+      grid-template-columns: 1fr;
+      row-gap: 2rem;
+
+      @include respond(tab-land) {
+            padding: 4.5rem;  
+      }
+
+      @include respond(tab-port) {
+            padding: 2.5rem;
+      }
+
+      @include respond(phone-land) {
+            grid-column: full-start / full-end;
+            padding: 2rem;
+      }
+
+      @include respond(phone) {
+            padding: 1rem;
+      }
+
+
+      &__heading {
+            justify-self: center;
+      }
+
+      &__underline {
+            width: 50%;
+            justify-self: center;
+            background-color: $color-primary-dark;
+            color: $color-primary-dark;
+            height: 0.3rem;
+      }
+
+      &__contactUsContainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+
+            @include respond(phone-land) {
+                  padding: 0 0 2rem 0;
+                  margin-top: -4rem;
+            }
+      }
+
+      &__contactText {
+            font-family: $font-primary;
+            font-weight: 400;
+            font-size: 1.8rem;
+            color: $color-black;
+      }
+
+      &__contactLink {
+            text-decoration: none;
+            font-family: $font-primary;
+            font-weight: 400;
+            font-size: 1.8rem;
+            color: $color-primary;
+            margin-left: 1.5rem;
+            border-bottom: 2px solid transparent;
+            transition: all 0.1s;
+            line-height: 1.2;
+
+            &:hover {
+                  color: $color-primary-dark;
+                  border-bottom: 2px solid $color-primary;
+            }
+      }
+
+      &__form {
+            display: grid;
+            grid-template-rows: repeat(5,min-content);
+            row-gap: 1.2rem;
+            background-color: #edf2f7;
+            padding: 5rem;
+            margin-top: 2rem;
+            border-radius: 5px;
+      }
+
+      &__headingContainer {
+            display: grid;
+            grid-template-columns: min-content 1fr;
+            align-items: center;
+      }
+
+      &__headingSvg {
+            height: 4rem;
+            width: 4rem;
+      }
+
+      &__formHeading {
+            font-family: $font-primary;
+            font-size: 3rem;
+            color: #444444;
+            justify-self: start;
+            margin-left: 1.7rem;
+      }
+
+      &__inputGroup {
+            font-family: $font-primary;
+            display: grid;
+            row-gap: 0.65rem;
+      }
+
+      &__label,&__hint {
+            font-family: $font-primary;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+      }
+
+      &__label {
+            color: $color-grey-dark-3;
+      }
+
+      &__hint {
+            padding-left: 1.5rem;
+            transition: all 0.3s;
+            color: $color-grey-dark-2;
+      }
+
+      &__input {
+            font-family: $font-primary;
+            color: $color-grey-dark-3;
+            padding: 1.5rem;
+            border: none;
+            font-weight: 500;
+            font-size: 1.9rem;      
+            background-color: $color-white;
+            border-radius: 3px;
+            box-shadow: 0 0.2rem 0.6rem rgba($color-black,0.1);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+
+            &:focus {
+                  outline: none;
+                  border-bottom: 3px solid #55c57a;
+            }
+
+            &::-webkit-input-placeholder {
+                  color: $color-grey-dark-2;
+                  font-weight: 700;
+            }
+
+            &:focus:invalid {
+                  border-bottom: 3px solid #ffb900;
+            }
+      }
+
+      &__input:placeholder-shown + &__hint {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-5.5rem);
+      }
+
+      &__sendButton {
+            &,
+            &:active,
+            &:focus {
+                  margin-top: 2rem;
+                  border: none;
+                  outline: none;
+                  font-size: 2rem;
+                  background-color: $color-primary;
+                  border-radius: 3px;
+                  color: $color-white;
+                  padding: 1.2rem 1.5rem;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  cursor: pointer;
+                  letter-spacing: 1px;
+                  transition: all 0.2s;
+            }
+
+            &:hover {
+                  background-color: $color-primary-dark;
+            }
+      }
+      &__sendSvg {
+            height: 3rem;
+            width: 3rem;
+            margin-right: 1.2rem;
+      }
+
+}

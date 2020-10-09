@@ -5,7 +5,7 @@ import loginImage from '../../assets/login.svg';
 
 class LoginPageContainer extends Component {
 	static defaultProps = {
-		API_KEY: 'AIzaSyBGhmLw-CdofcYbs2QGGlBERez_pv2pYj0',
+		API_KEY: 'AIzaSyAqaeSgLkK6xJkPUNDgR2DCQ0A6wR8Oz-g',
 	};
 	constructor(props) {
 		super(props);

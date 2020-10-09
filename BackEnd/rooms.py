@@ -27,8 +27,12 @@ class Rooms:
 
         self.noOfIntruders = max(self.noOfIntruders, humanDetector.noOfHumans)
 
+        self.noOfWeapons = max(self.noOfWeapons, humanDetector.noOfHumans)
+
         if self.noOfIntruders > 0:
             self.isSecure = False
+
+
 
     def restart(self):
 

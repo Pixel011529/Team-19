@@ -2,9 +2,10 @@ import numpy as np
 import cv2
 from darkflow.net.build import TFNet
 import base64
+import datetime
 
 
-class HumanDetector:
+class HumanAndWeaponDetector:
 
     def __init__(self, minSizeForHumanDetection):
 
@@ -12,6 +13,7 @@ class HumanDetector:
         self.minSizeForHumanDetection = minSizeForHumanDetection
         self.isHumanDetected = False
         self.noOfHumans = 0
+        self.noOfWeapons = 0
         self.hog = cv2.HOGDescriptor() 
         self.hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
         self.options = {
@@ -47,17 +49,22 @@ class HumanDetector:
 
     def analyzeYOLO(self, frame):
         
-        humans = self.tfnet.return_predict(frame)
+        objects = self.tfnet.return_predict(frame)
 
         self.noOfHumans = 0
-        for human in humans:
-            if human['label'] == 'person' and human['confidence']>0.4:
-                self.noOfHumans += 1
-                text = '{}: {:.0f}%'.format('person', human['confidence'] * 100)
-                tl = (human['topleft']['x'], human['topleft']['y'])
-                br = (human['bottomright']['x'], human['bottomright']['y'])
+        self.noOfWeapons = 0
+        for obj in objects:
+            if (obj['label'] == 'person' and obj['confidence']>0.4) or (obj['label'] == 'knife' and obj['confidence']>0.05):
+                if obj['label'] == 'person':
+                    self.noOfHumans += 1
+                else:
+                    self.noOfWeapons += 1
+                text = '{}: {:.0f}%'.format(obj['label'], obj['confidence'] * 100)
+                tl = (obj['topleft']['x'], obj['topleft']['y'])
+                br = (obj['bottomright']['x'], obj['bottomright']['y'])
                 frame = cv2.rectangle(frame, tl, br, (0, 255, 255), 5)
                 frame = cv2.putText(frame, text, tl, cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0), 2)
+                frame = cv2.putText(frame, str(datetime.datetime.now()), (20, 540), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 2)
         if self.noOfHumans>0:
             return frame,True
         else:

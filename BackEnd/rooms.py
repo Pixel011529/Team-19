@@ -35,3 +35,11 @@ class Rooms:
         self.noOfIntruders = 0
         self.noOfWeapons = 0
         self.isSecure = True
+
+    def get_status(self):
+        return {"FloorNo":str(self.floorNo),
+                "RoomNo":str(self.roomNo),
+                "NoOfIntruders":str(self.noOfIntruders),
+                "NoOfWeapons":str(self.noOfWeapons),
+                "IsSecure":str(self.isSecure)}
+

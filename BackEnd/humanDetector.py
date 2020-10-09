@@ -1,6 +1,8 @@
 import numpy as np
 import cv2
 from darkflow.net.build import TFNet
+import base64
+
 
 class HumanDetector:
 
@@ -13,7 +15,7 @@ class HumanDetector:
         self.hog = cv2.HOGDescriptor() 
         self.hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
         self.options = {
-            'model': 'cfg/yolov2.cfg',
+            'model': 'cfg/yolo.cfg',
             'load': 'bin/yolov2.weights',
             'threshold': 0.2,
             }
@@ -56,8 +58,11 @@ class HumanDetector:
                 br = (human['bottomright']['x'], human['bottomright']['y'])
                 frame = cv2.rectangle(frame, tl, br, (0, 255, 255), 5)
                 frame = cv2.putText(frame, text, tl, cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0), 2)
+        if self.noOfHumans>0:
+            return frame,True
+        else:
+            return frame,False
         
-        return frame
     
     def drawHumans(self, frame, humans):
 
@@ -70,3 +75,12 @@ class HumanDetector:
     def area(self, rectangle):
 
         return rectangle[2] * rectangle[3]
+
+    def img2base64(self,frame,img_name):
+        _, im_arr = cv2.imencode('.jpg', frame)  # im_arr: image in Numpy one-dim array format.
+        im_bytes = im_arr.tobytes()
+        im_b64 = base64.b64encode(im_bytes)
+        return {
+            str(img_name):str(im_b64)
+        }
+

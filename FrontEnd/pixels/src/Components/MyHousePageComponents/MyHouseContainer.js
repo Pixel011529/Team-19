@@ -96,16 +96,6 @@ class MyHouseContainer extends Component {
 			.catch((error) => {
 				console.log(error);
             });
-            
-        axios.get(`https://hackathon-94220.firebaseio.com/Monitoring.json`)
-        .then(response => {
-            this.setState({
-                monitoring:response.data.toMonitor
-            })
-        })
-        .catch(error => {
-            console.log(error);
-        })
 	}
 
 	parseImage(images) {
@@ -118,7 +108,6 @@ class MyHouseContainer extends Component {
 		this.setState({
 			monitoring: !this.state.monitoring,
         });
-        // axios.post(``)
     }
     
     handleReset() {

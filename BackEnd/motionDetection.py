@@ -18,7 +18,7 @@ class MotionDetector:
 
     def analyze(self, currFrame):
 
-        
+        originalframe = currFrame.frameBGR
         frameDiff = cv2.absdiff(currFrame.frameGrey, self.firstFrame.frameGrey)
         thresh = cv2.threshold(frameDiff, 25, 255, cv2.THRESH_BINARY)[1]
         thresh = cv2.dilate(thresh, None, iterations = 2)
@@ -47,8 +47,11 @@ class MotionDetector:
         else:
             text = "No Movement Detected"
 
-        thresh = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)
-        cv2.imshow("thresh", frameDiff)
+        cv2.putText(originalframe, str(text), (10,35), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255,255,255), 2, cv2.LINE_AA)
+
+        frameDiff = cv2.cvtColor(frameDiff, cv2.COLOR_GRAY2BGR)
+
+        cv2.imshow("Original and Motion Detection", np.hstack((originalframe, frameDiff)))
 
         return contours
         

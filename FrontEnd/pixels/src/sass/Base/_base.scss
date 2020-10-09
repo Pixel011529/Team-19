@@ -1,0 +1,139 @@
+// ========> Variables <========
+$color-primary: #1a64b5;
+$color-primary-dark: #005aaa;
+$color-secondary: #d7a31a;
+$color-secondary-dark: #b8913b;
+
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eeeeee;
+$color-grey-dark: #333333;
+$color-grey-dark-2: #999999;
+$color-grey-dark-3: #666666;
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+// =======> Fonts <=========
+$font-primary: 'Nunito', sans-serif;
+$font-display: 'Josefin Sans', sans-serif;
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+
+	@include respond(tab-land) {
+		font-size: 60%;
+	}
+
+	@include respond(tab-port) {
+		font-size: 56.25%;
+	}
+
+	@include respond(phone) {
+		font-size: 50%;
+	}
+}
+
+body {
+	font-family: $font-primary;
+	font-weight: 400;
+	color: $color-grey-dark-2;
+	line-height: 1.6;
+}
+
+.container {
+	display: grid;
+	grid-template-columns:
+		[full-start] minmax(6rem, 1fr) [center-start] repeat(
+			8,
+			[col-start] minmax(min-content, 14rem) [col-end]
+		)
+		[center-end] minmax(6rem, 1fr) [full-end];
+
+	&--home {
+		grid-template-rows: 80vh repeat(8, min-content);
+
+		@include respond(tab-land) {
+			grid-template-rows: repeat(9, min-content);
+		}
+	}
+
+	&--workshop {
+		grid-template-rows: 80vh repeat(2, min-content);
+
+		@include respond(tab-land) {
+			grid-template-rows: repeat(3, min-content);
+		}
+	}
+
+	&--individualWorkShop {
+		grid-template-rows: 80vh repeat(2, min-content);
+
+		@include respond(tab-land) {
+			grid-template-rows: repeat(3, min-content);
+		}
+	}
+
+	&--individualEvent {
+		grid-template-rows: 80vh repeat(2, min-content);
+
+		@include respond(tab-land) {
+			grid-template-rows: repeat(3, min-content);
+		}
+	}
+
+	&--techNonTech {
+		grid-template-rows: min-content 1fr;
+
+		@include respond(tab-land) {
+			grid-template-rows: repeat(2, min-content);
+		}
+	}
+
+	&--register {
+		grid-template-rows: 80vh repeat(3, min-content);
+
+		@include respond(tab-land) {
+			grid-template-rows: repeat(4, min-content);
+		}
+	}
+
+	&--contact {
+		grid-template-rows: 80vh repeat(2, min-content);
+
+		@include respond(tab-land) {
+			grid-template-rows: repeat(3, min-content);
+		}
+	}
+
+	&--accomodation {
+		grid-template-rows: 80vh repeat(2, min-content);
+
+		@include respond(tab-land) {
+			grid-template-rows: repeat(3, min-content);
+		}
+	}
+
+	&--login {
+		grid-template-rows: 100vh;
+	}
+
+	&--myHouse {
+		grid-template-rows: 80vh repeat(2, min-content);
+
+		@include respond(tab-land) {
+			grid-template-rows: repeat(3, min-content);
+		}
+	}
+
+	&--pageNotFound {
+		grid-template-rows: 100vh;
+	}
+}

@@ -1,0 +1,61 @@
+.sponsors {
+      background-color: $color-white;
+      grid-column: full-start/full-end;
+      overflow: hidden;
+      position: relative;
+      height: 30rem;
+      align-self: center;
+      padding: 5rem 0;
+      margin-bottom: 8rem;
+
+      &__heading {
+            text-align: center;
+            margin-bottom: 1rem;
+      }
+
+      &::after, &::before {
+            content: '';
+            height: 30rem;
+            width: 20rem;
+            background-image: linear-gradient(to right,$color-white 0%,rgba($color-white,0) 100%);
+            z-index: 10;
+            position: absolute;
+
+            @include respond(phone) {
+                  width: 10rem;
+            }
+      }
+
+      &::before {
+            top: 0;
+            left: 0;
+      }
+
+      &::after {
+            top: 0;
+            right: 0;
+            transform: rotateZ(180deg);
+      }
+
+      &__track {
+            display: flex;
+            width: calc(35rem * 10);
+            animation: slide 30s infinite linear;
+      }
+
+      &__container {
+            height: 20rem;
+            width: 35rem;
+            display: flex;
+            align-items: center;
+      }
+
+      @keyframes slide {
+            0% {
+                  transform: translateX(0);
+            }
+            100% {
+                  transform: translateX(calc(-35rem * 5));
+            }
+      }
+}

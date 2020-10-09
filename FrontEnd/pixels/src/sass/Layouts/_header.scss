@@ -1,0 +1,85 @@
+.header {
+      grid-column: full-start/full-end;
+
+      display: grid;
+      grid-template-rows: min-content 1fr;
+      grid-template-columns: 6fr 4fr;
+
+      @include respond(tab-port) {
+            grid-template-columns: 1fr 1fr;
+      }
+
+      @include respond(phone-land) {
+            grid-template-rows: repeat(3,min-content);
+            grid-template-columns: 1fr;
+      }
+
+      &__content {
+            grid-column: 1 / span 1;
+            display: grid;
+            grid-template-rows: repeat(3,min-content);
+            grid-template-columns: minmax(50rem,max-content);
+            row-gap: 3rem;
+            padding: 6rem;
+            justify-content: center;
+            align-content: center;
+
+            @include respond(tab-port) {
+                  grid-template-columns: minmax(min-content,max-content);
+                  padding: 2.5rem 6rem;
+                  margin-top: 3.5rem;
+            }
+
+            @include respond(phone-land) {
+                  grid-column: 1 / -1;
+            }
+
+            @include respond(phone) {
+                  margin-top: 4.5rem;
+                  padding: 2.5rem 3.5rem;
+            }
+
+            &--btn {
+                  border-radius: 4px;
+                  align-self: start;
+                  justify-self: start;
+                  text-decoration: none;
+
+                  &_secondary {
+                        background-color: $color-secondary;
+                        transition: all 0.2s;
+      
+                        &:hover {
+                              background-color: $color-secondary-dark;
+                        }
+                  }
+
+                  &_primary {
+                        background-color: $color-primary;
+                        transition: all 0.2s;
+      
+                        &:hover {
+                              background-color: $color-primary-dark;
+                        }
+                  }
+            }
+      }
+
+      &__image {
+            grid-column: 2 / span 1;
+            align-self: center;
+            justify-self: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @include respond(phone-land) {
+                  grid-column: 1 / -1;
+                  margin-bottom: 5rem;
+            }
+
+            &--img {
+                  padding: 2rem;
+            }
+      }
+}

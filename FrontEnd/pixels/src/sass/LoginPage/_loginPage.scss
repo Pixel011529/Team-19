@@ -1,0 +1,51 @@
+.login {
+	grid-column: full-start / full-end;
+	display: grid;
+	padding: 8rem;
+	grid-template-columns: repeat(2, 1fr);
+
+	@include respond(tab-port) {
+		grid-template-columns: 1fr;
+	}
+
+	&__form {
+		background-color: #edf2f7;
+		padding: 4rem;
+		border-radius: 3px;
+	}
+
+	&__formContainer {
+		display: grid;
+		row-gap: 2rem;
+		justify-content: center;
+		align-content: center;
+		grid-template-rows: repeat(4, min-content);
+		justify-items: center;
+	}
+
+	&__formBtn {
+		width: 100%;
+		margin-top: 2rem;
+	}
+
+	&__image {
+		grid-column: 2 / span 1;
+		align-self: center;
+		justify-self: center;
+
+		@include respond(tab-port) {
+			grid-row: 1 / span 1;
+			grid-column: 1 / -1;
+		}
+
+		&--img {
+			width: 100%;
+		}
+	}
+
+	&__signUpBtn {
+		margin-left: 1rem;
+		cursor: pointer;
+		color: $color-primary;
+	}
+}

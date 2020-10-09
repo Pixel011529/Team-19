@@ -1,11 +1,13 @@
 import numpy as np
 import cv2
+import time
 import imutils
 from frame import *
 from motionDetection import *
 
 
 cap = cv2.VideoCapture(0) 
+
 
 ret, frame = cap.read()
 frame = imutils.resize(frame, width = 750)
@@ -26,19 +28,19 @@ while (cap.isOpened()):
 
     currFrame = Frame(frame)
 
+
     contours = motionDetector.analyze(currFrame)
 
     displayFrame = currFrame.frameBGR.copy()
 
     
     cv2.imshow("frame", displayFrame)
+
     
     ch = cv2.waitKey(1)
     if ch & 0xFF == ord('q'):
         break
-    
-    if ch == ord('r'):
-        room.restart()
 
 cv2.destroyAllWindows()
 cap.release()
+
